@@ -40,8 +40,14 @@ namespace MvcWebApp.Controllers
         [HttpPost]
         public IActionResult Register(RegisterViewModel model)
         {
+
             if (ModelState.IsValid)
             {
+                if (_databseContext.Users.Any(x => x.Username.ToLower() == model.UserName.ToLower()))
+                {
+                    ModelState.AddModelError(nameof(model.UserName), "Username is already exist!");
+                    View(model);
+                }
                 string md5Salt = _configuration.GetValue<string>("AppSettings:MD5Salt");
                 string saltedPassword = model.Password + md5Salt;
                 //Since most of the passwords exist on the sites,
