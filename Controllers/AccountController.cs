@@ -1,17 +1,18 @@
 using Microsoft.AspNetCore.Mvc;
 using MvcWebApp.Entities;
 using MvcWebApp.Models;
+using NETCore.Encrypt.Extensions;
 
 namespace MvcWebApp.Controllers
 {
-
-
     public class AccountController : Controller
     {
         private readonly DatabseContext _databseContext;
-        public AccountController(DatabseContext databseContext)
+        private readonly IConfiguration _configuration;
+        public AccountController(DatabseContext databseContext, IConfiguration configuration)
         {
             _databseContext = databseContext;
+            _configuration = configuration;
         }
         public IActionResult Login()
         {
@@ -41,6 +42,11 @@ namespace MvcWebApp.Controllers
         {
             if (ModelState.IsValid)
             {
+                string md5Salt = _configuration.GetValue<string>("AppSettings:MD5Salt");
+                string saltedPassword = model.Password + md5Salt;
+                //Since most of the passwords exist on the sites,
+                // we strengthen the incoming password.
+                string hashedPassword = saltedPassword.MD5();
                 User user = new()
                 {
                     Username = model.UserName,
