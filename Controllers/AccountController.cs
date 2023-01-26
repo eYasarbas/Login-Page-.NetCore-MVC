@@ -10,9 +10,9 @@ namespace MvcWebApp.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly DatabseContext _databseContext;
+        private readonly DatabaseContext _databseContext;
         private readonly IConfiguration _configuration;
-        public AccountController(DatabseContext databseContext, IConfiguration configuration)
+        public AccountController(DatabaseContext databseContext, IConfiguration configuration)
         {
             _databseContext = databseContext;
             _configuration = configuration;
@@ -43,7 +43,7 @@ namespace MvcWebApp.Controllers
                     }
                     List<Claim> claims = new List<Claim>();//for Cookie
                     claims.Add(new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()));//Global name for id
-                    claims.Add(new Claim(ClaimTypes.Name, user.Fullname ?? string.Empty));//Global name for Fullname
+                    claims.Add(new Claim(ClaimTypes.Name, user.FullName ?? string.Empty));//Global name for Fullname
                     claims.Add(new Claim("Username", user.Username ?? string.Empty));
 
                     ClaimsIdentity identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
