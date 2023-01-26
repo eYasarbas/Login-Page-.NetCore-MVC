@@ -4,19 +4,25 @@ namespace MvcWebApp.Models
 {
     public class RegisterViewModel
     {
-        [Required(ErrorMessage = "Username is required!")]
-        [StringLength(30, ErrorMessage = "Username must be 30 characters!")]
-        public String? UserName { get; set; }
-        [Required(ErrorMessage = "Password is required!")]
-        [MinLength(6, ErrorMessage = "Password must be minimum 6 charaters!")]
-        [MaxLength(16, ErrorMessage = "Password must be max 16 charaters!")]
-        public String? Password { get; set; }
+
+        //[Display(Name ="Kullanıcı Adı", Prompt ="johndoe")]
+        [Required(ErrorMessage = "Username is required.")]
+        [StringLength(30, ErrorMessage = "Username can be max 30 characters.")]
+        public string? Username { get; set; }
 
         //[DataType(DataType.Password)]
-        [Required(ErrorMessage = "RePassword is required!")]
-        [MinLength(6, ErrorMessage = "RePassword must be minimum 6 charaters!")]
-        [MaxLength(16, ErrorMessage = "RePassword must be max 16 charaters!")]
-        [Compare(nameof(Password))]//hatayı direkt bulmak için
+        [Required(ErrorMessage = "Password is required.")]
+        [MinLength(6, ErrorMessage = "Password can be min 6 characters.")]
+        [MaxLength(16, ErrorMessage = "Password can be max 16 characters.")]
+        public string? Password { get; set; }
+
+        [Required(ErrorMessage = "Re-Password is required.")]
+        [MinLength(6, ErrorMessage = "Re-Password can be min 6 characters.")]
+        [MaxLength(16, ErrorMessage = "Re-Password can be max 16 characters.")]
+        [Compare(nameof(Password))]/*When typing with nameof, 
+        the error appears immediately in string operations.
+         Otherwise, it can sometimes be overlooked.
+         It's a better approach to write it this way.*/
         public string? RePassword { get; set; }
     }
 }
