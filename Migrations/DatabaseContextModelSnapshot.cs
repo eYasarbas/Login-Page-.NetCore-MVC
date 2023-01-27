@@ -21,7 +21,7 @@ namespace MvcWebApp.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("WebApplication2.Entities.User", b =>
+            modelBuilder.Entity("MvcWebApp.Entities.User", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
