@@ -126,7 +126,7 @@ namespace MvcWebApp.Controllers
             return View();
         }
 
-        private void ProfileInfoLoader()
+        private void ProfileInfoLoader()//verilerin doldurulması için
         {
             Guid userid = new Guid(User.FindFirstValue(ClaimTypes.NameIdentifier));
             User user = _databaseContext.Users.SingleOrDefault(x => x.Id == userid);
@@ -139,7 +139,7 @@ namespace MvcWebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                Guid userid = new Guid(User.FindFirstValue(ClaimTypes.NameIdentifier));
+                Guid userid = new Guid(User.FindFirstValue(ClaimTypes.NameIdentifier));//cookie den çekeliriz
                 User user = _databaseContext.Users.SingleOrDefault(x => x.Id == userid);
 
                 user.FullName = fullname;
