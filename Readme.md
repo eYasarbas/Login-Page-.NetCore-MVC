@@ -29,11 +29,13 @@ This project is a Login&Logout page. Cookies, user roles and database are used i
 
 - Login Page Design
 
-Loginpage.png
+![Login](https://user-images.githubusercontent.com/65676107/215329631-5c14606d-a348-4101-b86d-c5e9ae13c8f9.PNG)
+
 
 - Register Page Design
 
-RegisterPage.png
+![Register](https://user-images.githubusercontent.com/65676107/215329643-9e7aeb9e-96ef-4472-870d-b2887a9b9607.PNG)
+
 
 - Password Encrypt Process
 
@@ -49,7 +51,8 @@ Actions set by user role and Setting Admin Link Visibility. For example, only us
 
 - Profile Page Process
 
-profile png
+![profile](https://user-images.githubusercontent.com/65676107/215329669-9651fa03-6766-4f43-98e8-325b9bbf0471.PNG)
+
 
 - Used to ToastrJS
 
